@@ -4,7 +4,7 @@
 {% if messages %}
     <div class="container mt-3 bg-white text-center text-danger "style=" width: 60%;">
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
+        <div class="alert alert-{{ message.tags }}" id="alert-message">
             {{ message }}
         </div>
         {% endfor %}
@@ -41,5 +41,7 @@
 </div>
 
 <br><br><br>
+
+
 
 {% endblock content %}

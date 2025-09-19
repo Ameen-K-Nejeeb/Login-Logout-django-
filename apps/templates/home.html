@@ -49,6 +49,17 @@
 
     {% endblock content %}
 
+<script>
+  // Select the alert div
+  const alert = document.getElementById("alert-message");
+
+  if(alert){
+    // Wait 3 seconds (3000 ms)
+    setTimeout(function(){
+      alert.style.display = "none";  // hide the alert
+    }, 3000);
+  }
+</script>
 
 
 
