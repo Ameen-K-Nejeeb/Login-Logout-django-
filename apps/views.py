@@ -1,20 +1,25 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import never_cache
+
+
 
 
 # Create your views here.
+# @never_cache
+# def home(request):
+#     return render(request, 'home.html')
 
-def home(request):
-    return render(request, 'home.html')
-
+@never_cache
 def user_logout(request):
     logout(request)
-    messages.success(request,"You have veen logged out!")
+    messages.success(request,"You have been logged out!")
     return redirect('login')
 
+@never_cache
 def user_signin(request):
 
     if request.method == 'POST':
@@ -36,8 +41,11 @@ def user_signin(request):
 
     return render(request,'signin.html')
 
-
+@never_cache
 def user_login(request):
+
+    if request.user.is_authenticated:
+         return redirect('dashbord')
 
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -57,6 +65,10 @@ def user_login(request):
     return render(request, 'login.html')
 
 # Dashboard (protected)
+@never_cache
 @login_required(login_url='login')
 def dash_bord(request):
-    return render(request, 'dashboard.html', {"username": request.user.username})
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    return render(request, 'dashbord.html', {"username": request.user.username})

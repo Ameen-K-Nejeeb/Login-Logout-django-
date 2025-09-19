@@ -1,18 +1,27 @@
 {% extends "home.html" %}
 
 {% block content %}
-
+{% if messages %}
+    <div class="container mt-3 bg-danger text-center text-white ">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
 <br><br><br>
 <div class="d-flex justify-content-center align-items-center vh-100 ">
     <form method="POST" class="p-4 border rounded bg-light" style="width: 500px;">
+
         {% csrf_token %}
         <h3 class="text-center mb-3">Login</h3>
         <div class="mb-3">
-            <input type="text" class="form-control" id="username" placeholder="Username">
+            <input type="text" class="form-control" name="username" id="username" placeholder="Username">
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-primary w-100">Login</button>
         <br><br>
@@ -20,6 +29,15 @@
             <a class="btn btn-secondary" style="width: 150px;" href="{% url 'signin' %}">Sign In</a>
         </div>
     </form>
+
+
+
+
+   
+
+
+
+
 </div>
 
 <br><br><br>
