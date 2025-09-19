@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if messages %}
-    <div class="container mt-3 bg-danger text-center text-white ">
+    <div class="container mt-3 bg-danger text-center text-white " style=" width: 60%;">
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }}">
             {{ message }}

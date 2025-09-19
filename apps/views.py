@@ -15,8 +15,12 @@ from django.views.decorators.cache import never_cache
 
 @never_cache
 def user_logout(request):
-    logout(request)
-    messages.success(request,"You have been logged out!")
+    if request.user.is_authenticated:
+         logout(request)
+         messages.success(request,"You have been logged out!")
+         return redirect('dashbord')
+    
+    
     return redirect('login')
 
 @never_cache
