@@ -6,15 +6,17 @@
 <br><br><br>
 <div class="d-flex justify-content-center align-items-center vh-100 ">
     <form method="POST" class="p-4 border rounded bg-light" style="width: 500px;">
+        {% csrf_token %}
+        
         <h3 class="text-center mb-3">SignUp</h3>
         <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Username">
+            <input type="text" class="form-control" id="signin_username" name="username" placeholder="Username">
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" name="password1" id="password1" placeholder="Password">
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" placeholder="EnterPassword">
+            <input type="password" class="form-control" name="password2" id="password2" placeholder="EnterPassword">
         </div>
         <button type="submit" class="btn btn-primary w-100">Login</button>
     </form>

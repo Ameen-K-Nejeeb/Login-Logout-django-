@@ -1,8 +1,35 @@
 {% extends "home.html" %}
+<!-- # this is my dashbord.html and url give name as dashbord -->
+<!-- {% block content %}
+
+    {% if messages %}
+
+        <div class="container mt-3">
+            <div class="alert alert-{{messages}}"></div>
+        </div>
+      
+    {% endif %}
+  
+{% endblock content %} -->
+
+
 
 {% block content %}
 
-    <h1>hello this is dashbord</h1>
-  
+{% if messages %}
+    <div class="container mt-3">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="container mt-5">
+    <h2>Welcome, {{ username }}!</h2>
+    <p>This is your dashboard.</p>
+  </div>
 {% endblock content %}
+
 
